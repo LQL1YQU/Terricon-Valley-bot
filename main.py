@@ -29,13 +29,14 @@ WELCOME_TEXT = "Добро пожаловать в бот практики Terri
 MAIN_MENU_TEXT = "Выберите раздел:"
 
 INFO_OPTIONS = {
-    'practice': "Что из себя представляет практика: Практика в Terricon Valley - это возможность получить реальный опыт работы в IT-компании.",
-    'documents': "Документы: Необходимы паспорт, СНИЛС и заявление.",
-    'deadlines': "Сроки: Практика проходит с июня по август.",
-    'location': "Где проходит: Онлайн или в офисе в Москве.",
-    'supervisor': "Руководитель: Иван Иванов, ivan@terricon.ru",
-    'checking': "Проверка заданий: Задания проверяются еженедельно.",
-    'criteria': "Критерии оценки: Качество кода, timeliness, коммуникация."
+    'how': "Можно попасть через колледж или напрямую обратиться в организацию и согласовать практику.",
+    'practice': "Практика включает выполнение практических заданий, а также периодическое участие в лекциях и консультациях.",
+    'documents': "Договор на практику, направление от колледжа, дневник практики.",
+    'time': "Практикант посещает практику в соответствии с графиком, согласованным колледжем и нашей организацией.",
+    'location': "БЦ Возрождение, улица Алалыкина, 12/1.",
+    'supervisor': "Айжана.",
+    'checking': "Карина.",
+    'criteria': "По качеству выполнения задач и соблюдению дедлайнов."
 }
 
 RESOURCES_TEXT = """
@@ -52,17 +53,16 @@ REGISTER_TEXT = "Отправьте скриншот регистрации."
 # --- Меню ---
 def get_main_menu():
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("Что из себя представляет практика", callback_data='practice')],
-        [InlineKeyboardButton("Документы", callback_data='documents')],
-        [InlineKeyboardButton("Сроки", callback_data='deadlines')],
-        [InlineKeyboardButton("Где проходит", callback_data='location')],
-        [InlineKeyboardButton("Руководитель", callback_data='supervisor')],
-        [InlineKeyboardButton("Проверка заданий", callback_data='checking')],
-        [InlineKeyboardButton("Критерии оценки", callback_data='criteria')],
-        [InlineKeyboardButton("Ресурсы", callback_data='resources')],
-        [InlineKeyboardButton("Ознакомлен/на", callback_data='acquainted')],
-        [InlineKeyboardButton("Я зарегистрировался на мероприятие", callback_data='registered')]
-    ])
+            [InlineKeyboardButton("Как можно попасть на практику?", callback_data='how')],
+            [InlineKeyboardButton("Что из себя представляет практика?", callback_data='practice')],
+            [InlineKeyboardButton("Какие документы нужно подготовить?", callback_data='documents')],
+            [InlineKeyboardButton("Сколько времени длится практика?", callback_data='time')],
+            [InlineKeyboardButton("Где проходит практика?", callback_data='location')],
+            [InlineKeyboardButton("Кто является руководителем?", callback_data='supervisor')],
+            [InlineKeyboardButton("Кто проверяет задания?", callback_data='checking')],
+            [InlineKeyboardButton("Критерии оценки", callback_data='criteria')],
+            [InlineKeyboardButton("Я со всем ознакомился. Хочу пройти практику", callback_data='confirm_yes')]
+        ])
 
 # --- Старт ---
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
